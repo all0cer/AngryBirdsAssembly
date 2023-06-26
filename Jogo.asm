@@ -22,6 +22,13 @@ coresCoelho:
 	#ebe8e6 #OLHOS
 	#3e3f3d #PUPILA
 	
+coresBomba: add $23, $0 , 0x000000 #COR PRETA
+            #5f3716 #SOBRANCELHA
+            #f8f5f1 #OLHOS
+            #f10e0e #PUPILA
+            #f5e800 #BICO
+            #595050 #BARRIGA
+	
 ########## CORES ##############
 
        
@@ -139,13 +146,13 @@ sprite:      lui $9, 0x1001 #INICIALIZAR VALOR PARA IMPRIMIR SPRITES
 
 
 ########## SPRITE DE COELHO #############
- cimacabeca:beq $17, $0, ladocabeca
+ cimacabeca:beq $17, $0, ladocabeca0
        sw $22, 1032($9)
        add $9, $9, 4
        add $17, $17, -1
        j cimacabeca
  
- ladocabeca: add $9, $9, 1544
+ ladocabeca0: add $9, $9, 1544
  	     sw $22, 0($9)
  	     
  	     add $9, $9, 516
@@ -170,7 +177,7 @@ baixocabeca: add $9, $9, 508
  	     add $9, $9, -4
  	     sw $22, 0($9)
  	 
-ladocabeca2: add $9, $9, -516
+ladocabeca1: add $9, $9, -516
  	     sw $22, 0($9)
  	     add $9, $9, -516
  	     sw $22, 0($9)
@@ -190,13 +197,13 @@ ladocabeca2: add $9, $9, -516
  	     
  	     add $17,$0, 5
  	     
-preencher1: beq $17, $0, preencher2
+preencher0: beq $17, $0, preencher1
             sw $22, 0($9)
             add $9, $9, 4
             add $17, $17, -1
-            j preencher1
+            j preencher0
             
-preencher2:  add $17,$0, 7
+preencher1:  add $17,$0, 7
  	     add $9, $9, 488
  	     jal preencher
  	     
@@ -232,7 +239,7 @@ imprimirsobrancelha: add $22, $0, 0x80461c #COLOCANDO COR SOBRANCELHA
  	             sw $22, 0($9)
  	            
  	            
- 	             add $22, $0, 0xebe8e6 #COLOCANDO COR DOS OLHOS
+olhos: 	             add $22, $0, 0xebe8e6 #COLOCANDO COR DOS OLHOS
 	             lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR OLHOS
 	             
 	             add $9, $9, 2568
@@ -244,7 +251,7 @@ imprimirsobrancelha: add $22, $0, 0x80461c #COLOCANDO COR SOBRANCELHA
  	             add $9, $9, -508
  	             sw $22, 0($9)
  	             
- 	             add $22, $0, 0x3e3f3d #COLOCANDO COR DA PUPILA
+pupila: 	     add $22, $0, 0x3e3f3d #COLOCANDO COR DA PUPILA
 	             lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR PUPILA
 	             
 	             add $9, $9, 3084
@@ -280,15 +287,202 @@ orelhas:           add $22, $0, 0x6CF305 #COLOCANDO COR DA ORELHA
  	           sw $22, 0($9)
  	           add $9, $9, -4
  	           sw $22, 0($9)
-	             
-	             
 ########## SPRITE DE COELHO #############    
 
-       
+
+
+
+
+
+########## SPRITE DO SEGUNDO COELHO #############
+ sprite2:    lui $9, 0x1001 
+	     add $17, $0, 5
+	     add $9, $9, 1428
+	     
+cimacabeca2:beq $17, $0, ladocabeca2
+           sw $22, 0($9)
+           add $9, $9, 4
+           add $17, $17, -1
+           j cimacabeca2
+
+ladocabeca2: add $9, $9, 512
+ 	     sw $22, 0($9)
+ 	     
+ 	     add $9, $9, 516
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 512
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 512
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 512
+ 	     sw $22, 0($9)
+ 	     
+baixocabeca2: add $9, $9, 508
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 508
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4
+ 	     sw $22, 0($9)
+
+ladocabeca22: add $9, $9, -516
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -516
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -512
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -512
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -512
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -508
+ 	     sw $22, 0($9)
+
+	     lui $9, 0x1001 
+ 	     
+ 	     add $9, $9, 1940
+ 	     sw $22, 0($9)
+ 	     
+ 	     add $17,$0, 5
+ 	     
+ 	     
+ preencher2: beq $17, $0, preencher22
+            sw $22, 0($9)
+            add $9, $9, 4
+            add $17, $17, -1
+            j preencher2
+            
+preencher22:  add $17,$0, 7
+ 	      add $9, $9, 488
+ 	      jal preencher
+ 	     
+ 	      add $17,$0, 7
+ 	      add $9, $9, 484
+ 	      jal preencher
+ 	      
+ 	      add $17,$0, 8
+ 	      add $9, $9, 480
+ 	      jal preencher
+ 	      
+ 	      add $17,$0, 8
+ 	      add $9, $9, 480
+ 	      jal preencher
+ 	      
+ 	      add $17,$0, 6
+ 	      add $9, $9, 484
+ 	      jal preencher
+ 	      
+ 	      
+ 	      
+imprimirsobrancelha2: add $22, $0, 0x80461c #COLOCANDO COR SOBRANCELHA
+	             lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR SOBRANCELHA
+	             
+	             add $9, $9, 2452
+ 	             sw $22, 0($9)
+ 	             
+ 	             add $9, $9, 516
+ 	             sw $22, 0($9)
+ 	             
+ 	             add $9, $9, 8
+ 	             sw $22, 0($9)
+ 	             
+ 	             add $9, $9, -508
+ 	             sw $22, 0($9)
+ 	             
+ 	             
+imprimindoolhos:     add $22, $0, 0xebe8e6 #COLOCANDO COR DOS OLHOS
+	             lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR OLHOS
+	             
+	             add $9, $9, 2964
+ 	             sw $22, 0($9)
+ 	             add $9, $9, 512
+ 	             sw $22, 0($9)
+ 	             add $9, $9, 12
+ 	             sw $22, 0($9)
+ 	             add $9, $9, -508
+ 	             sw $22, 0($9)
+ 	             
+ 	             
+pupila2:             add $22, $0, 0x3e3f3d #COLOCANDO COR DA PUPILA
+	             lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR PUPILA
+	             
+	             add $9, $9, 3480
+ 	             sw $22, 0($9)
+ 	             add $9, $9, 12
+ 	             sw $22, 0($9)	             
+ 	             
+ 	             
+ 	             
+dentinho2:	   add $22, $0, 0xebe8e6 #COLOCANDO COR DO DENTINHO
+	           lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR DENTINHO 
+	            
+	           add $9, $9, 4508
+ 	           sw $22, 0($9)
+ 	           
+
+orelhas2:           add $22, $0, 0x6CF305 #COLOCANDO COR DA ORELHA
+	           lui $9, 0x1001  #REINICIANDO PARA IMPRIMIR ORELHA
+	           
+	           add $9, $9, 404
+ 	           sw $22, 0($9)
+ 	           add $9, $9, 4
+ 	           sw $22, 0($9)
+ 	           add $9, $9, 508
+ 	           sw $22, 0($9)
+ 	           add $9, $9, 4
+ 	           sw $22, 0($9)
+ 	           
+ 	           
+ 	           add $9, $9, 8
+ 	           sw $22, 0($9)
+ 	           add $9, $9, 4
+ 	           sw $22, 0($9)
+ 	           add $9, $9, -512
+ 	           sw $22, 0($9)
+ 	           add $9, $9, -4
+ 	           sw $22, 0($9)
+	             
+	             
+ 	    
+########## SPRITE DO SEGUNDO COELHO #############
               
-                     
-                            
+
+                           
+
+
+
+
+
+########## SPRITE DO BOMBA #############
+sprite3:     lui $9, 0x1001 
+	     add $17, $0, 5
+	     add $9, $9, 21908
+             
+cimacabeca3:beq $17, $0, fim #m
+            sw $23, 0($9)
+            add $9, $9, 4
+            add $17, $17, -1
+            j cimacabeca3
+
+
+
+
+
+
+
+
+########## SPRITE DO BOMBA #############                                                    
                                    
+       
+       
+       
+       
+       
        
 fim: addi $2, $0, 10
      syscall
