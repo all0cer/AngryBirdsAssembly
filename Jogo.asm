@@ -22,6 +22,9 @@ coresCoelho:
 	#ebe8e6 #OLHOS
 	#3e3f3d #PUPILA
 	
+	#658668 #CORPO
+	#f1a500 #OLHO 
+	
 coresBomba: add $23, $0 , 0x000000 #COR PRETA
             #5f3716 #SOBRANCELHA
             #f8f5f1 #OLHOS
@@ -376,8 +379,8 @@ preencher22:  add $17,$0, 7
  	      add $17,$0, 6
  	      add $9, $9, 484
  	      jal preencher
- 	      
- 	      
+ 
+      
  	      
 imprimirsobrancelha2: add $22, $0, 0x80461c #COLOCANDO COR SOBRANCELHA
 	             lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR SOBRANCELHA
@@ -463,18 +466,159 @@ sprite3:     lui $9, 0x1001
 	     add $17, $0, 5
 	     add $9, $9, 21908
              
-cimacabeca3:beq $17, $0, fim #m
+cimacabeca3:beq $17, $0, ladocabeca3 #m
             sw $23, 0($9)
             add $9, $9, 4
             add $17, $17, -1
             j cimacabeca3
 
+ladocabeca3: add $9, $9, 512
+ 	     sw $23, 0($9)
+ 	     
+ 	     add $9, $9, 516
+ 	     sw $23, 0($9)
+ 	     add $9, $9, 512
+ 	     sw $23, 0($9)
+ 	     add $9, $9, 512
+ 	     sw $23, 0($9)
+ 	     add $9, $9, 512
+ 	     sw $23, 0($9)
 
+baixocabeca3: add $9, $9, 508
+ 	     sw $23, 0($9)
+ 	     add $9, $9, 508
+ 	     sw $23, 0($9)
+ 	     add $9, $9, -4
+ 	     sw $23, 0($9)
+ 	     add $9, $9, -4
+ 	     sw $23, 0($9)
+ 	     add $9, $9, -4
+ 	     sw $23, 0($9)
+ 	     add $9, $9, -4
+ 	     sw $23, 0($9)
 
+ladocabeca33: add $9, $9, -516
+ 	     sw $23, 0($9)
+ 	     add $9, $9, -516
+ 	     sw $23, 0($9)
+ 	     add $9, $9, -512
+ 	     sw $23, 0($9)
+ 	     add $9, $9, -512
+ 	     sw $23, 0($9)
+ 	     add $9, $9, -512
+ 	     sw $23, 0($9)
+ 	     add $9, $9, -508
+ 	     sw $23, 0($9)
 
+	     lui $9, 0x1001 
+ 	     
+ 	     add $9, $9, 22420
+ 	     sw $23, 0($9)
+ 	     
+ 	     add $17,$0, 5	
+		
+		
+preencher3: beq $17, $0, preencher33
+            sw $23, 0($9)
+            add $9, $9, 4
+            add $17, $17, -1
+            j preencher3
+            
+preencher33:  add $17,$0, 7
+ 	      add $9, $9, 488
+ 	      jal preencherr
+ 	     
+ 	      add $17,$0, 7
+ 	      add $9, $9, 484
+ 	      jal preencherr
+ 	      
+ 	      add $17,$0, 8
+ 	      add $9, $9, 480
+ 	      jal preencherr
+ 	      
+ 	      add $17,$0, 8
+ 	      add $9, $9, 480
+ 	      jal preencherr
+ 	      
+ 	      add $17,$0, 6
+ 	      add $9, $9, 484
+ 	      jal preencherr
 
+imprimirsobrancelha3:add $22, $0, 0x80461c #COLOCANDO COR SOBRANCELHA
+	             lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR SOBRANCELHA
+	             
+	             add $9, $9, 22932
+ 	             sw $22, 0($9)
+ 	             
+ 	             add $9, $9, 516
+ 	             sw $22, 0($9)
+ 	             
+ 	             add $9, $9, 8
+ 	             sw $22, 0($9)
+ 	             
+ 	             add $9, $9, -508
+ 	             sw $22, 0($9)
 
-
+imprimindoolhos3:    add $22, $0, 0xebe8e6 #COLOCANDO COR DOS OLHOS
+		     add $23, $0 , 0xf10e0e#COLOCANDO COR DA PUPILA
+	             lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR OLHOS
+	             
+	             add $9, $9, 23444
+ 	             sw $22, 0($9)
+ 	             add $9, $9, 512
+ 	             sw $22, 0($9)
+ 	             
+ 	             
+pupi: 	             add $9, $9, 4
+ 	             sw $23, 0($9)
+ 	             
+ 	             
+ 	             add $9, $9, 12
+ 	             sw $22, 0($9)
+ 	             
+pup: 	             add $9, $9, 4
+ 	             sw $23, 0($9)
+ 	             
+ 	             add $9, $9, -512
+ 	             sw $22, 0($9)
+ 	             
+ 	             add $9, $9, -4
+ 	             sw $22, 0($9)
+ 	             
+bico:        lui $9, 0x1001 
+ 	     add $23, $0, 0xf5e800 #COR AMARELA
+ 	     
+ 	     add $9, $9, 24476
+ 	     sw $23, 0($9)
+ 	     
+ 	    add $9, $9, 4
+ 	    sw $23, 0($9)
+ 	    
+ 	    add $9, $9, 516
+ 	    sw $23, 0($9)
+ 	     
+ 	    add $9, $9, -4
+ 	    sw $23, 0($9)
+ 	    
+ 	    add $9, $9, -4
+ 	    sw $23, 0($9)
+ 	    
+fio: 	 lui $9, 0x1001 
+ 	 add $23, $0, 0x0000000 #COR PRETA
+ 	 
+ 	 add $9, $9, 21404
+ 	 sw $23, 0($9)
+ 	 
+ 	 add $9, $9, -512
+ 	 sw $23, 0($9)
+ 	 
+ 	 
+ 	 add $23, $0, 0x79044f
+ 	 
+ 	 add $9, $9, -508
+ 	 sw $23, 0($9)                             
+ 	 
+ 	   
 
 ########## SPRITE DO BOMBA #############                                                    
                                    
@@ -511,3 +655,13 @@ preencher:  beq $17, $0, volta
             add $17, $17, -1
             j preencher
 	    volta: jr $31
+
+# --------------------------------------#
+##Função: acrescentar a cor no end de memoria em $9 no valor que está em $17
+# efeito: Preenche o corpo do sprite do coelho com a cor preta	    
+preencherr:  beq $17, $0, volta1
+            sw $23, 0($9)
+            add $9, $9, 4
+            add $17, $17, -1
+            j preencherr
+	    volta1: jr $31
