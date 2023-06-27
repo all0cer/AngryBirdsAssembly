@@ -627,6 +627,12 @@ fio: 	 lui $9, 0x1001
        
        
        
+######### MOVIMENTAÇÃO ############       
+
+
+      
+######### MOVIMENTAÇÃO ############        
+       
        
 fim: addi $2, $0, 10
      syscall
@@ -655,13 +661,23 @@ preencher:  beq $17, $0, volta
             add $17, $17, -1
             j preencher
 	    volta: jr $31
-
-# --------------------------------------#
-##Função: acrescentar a cor no end de memoria em $9 no valor que está em $17
-# efeito: Preenche o corpo do sprite do coelho com a cor preta	    
+	    
 preencherr:  beq $17, $0, volta1
             sw $23, 0($9)
             add $9, $9, 4
             add $17, $17, -1
             j preencherr
 	    volta1: jr $31
+
+# --------------------------------------#
+##Função: Armazenar valor alto no reg $15 e zerar para sair do laço
+# efeito: Fazer com que o movimento seja visível ao mudar posição do pixel
+sleep: addi $15, $0, 8000
+forsleep: beq $15, $0, fimsleep
+          nop
+          nop
+          nop
+          nop
+          addi $15, $15, -1
+          j forsleep  
+fimsleep: jr $31
