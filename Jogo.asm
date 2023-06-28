@@ -43,9 +43,11 @@ soma0:addi $11, $0, 1024  #LINHAS AMARELA
       
       
       
-########## IMPRIMINDO POR DO SOL ##############      
+########## IMPRIMINDO POR DO SOL ##############  
+          
 cor0: beq $11, $0, soma1
      sw $20, 0($8) #MOSTRAR PIXEL NA TELA
+     sw $20, 34000($8)
      
      addi $8, $8, 4 #PASSA PARA O PRÓXIMO PIXEL
      addi $11, $11, -1 #REDUZIR VALOR PARA O LAÇO
@@ -57,6 +59,7 @@ soma1: jal somalinhas #PULA PARA SOMAR O REG $11 COM MAIS 5 LINHAS
        add $20, $0, 0xfeec04 #SEGUNDA COR AMARELA
 cor2:beq $11, $0, soma2
      sw $20, 0($8) #MOSTRAR PIXEL NA TELA
+     sw $20, 34004($8)
      
      addi $8, $8, 4 #PASSA PARA O PRÓXIMO PIXEL
      addi $11, $11, -1 #REDUZIR VALOR PARA O LAÇO
@@ -68,7 +71,7 @@ soma2: jal somalinhas #PULA PARA SOMAR O REG $11 COM MAIS 5 LINHAS
        add $20, $0, 0xfdda03 #TERCEIRA COR AMARELA
 cor3:beq $11, $0, soma3
      sw $20, 0($8) #MOSTRAR PIXEL NA TELA
-     
+     sw $20, 34008($8)
      addi $8, $8, 4 #PASSA PARA O PRÓXIMO PIXEL
      addi $11, $11, -1 #REDUZIR VALOR PARA O LAÇO
       j cor3
@@ -79,7 +82,7 @@ soma3: jal somalinhas #PULA PARA SOMAR O REG $11 COM MAIS 5 LINHAS
        add $20, $0, 0xfcc803 #QUARTA COR AMARELA
 cor4:beq $11, $0, soma4
      sw $20, 0($8) #MOSTRAR PIXEL NA TELA
-     
+     sw $20, 34012($8)
      addi $8, $8, 4 #PASSA PARA O PRÓXIMO PIXEL
      addi $11, $11, -1 #REDUZIR VALOR PARA O LAÇO
       j cor4
@@ -89,7 +92,7 @@ soma4: jal somalinhas #PULA PARA SOMAR O REG $11 COM MAIS 5 LINHAS
        add $20, $0, 0xfaa302 #QUINTA COR AMARELA
 cor5:beq $11, $0, soma5
      sw $20, 0($8) #MOSTRAR PIXEL NA TELA
-     
+     sw $20, 34016($8)
      addi $8, $8, 4 #PASSA PARA O PRÓXIMO PIXEL
      addi $11, $11, -1 #REDUZIR VALOR PARA O LAÇO
       j cor5
@@ -100,6 +103,7 @@ soma5: jal somalinhas #PULA PARA SOMAR O REG $11 COM MAIS 5 LINHAS
        add $20, $0, 0xf87f01 #SEXTA COR AMARELA
 cor6:beq $11, $0, soma6
      sw $20, 0($8) #MOSTRAR PIXEL NA TELA
+     sw $20, 34020($8)
      
      addi $8, $8, 4 #PASSA PARA O PRÓXIMO PIXEL
      addi $11, $11, -1 #REDUZIR VALOR PARA O LAÇO
@@ -111,7 +115,7 @@ soma6: jal somalinhas #PULA PARA SOMAR O REG $11 COM MAIS 5 LINHAS
        add $20, $0, 0xf75b00 #SÉTIMA COR AMARELA
 cor7:beq $11, $0, somaB1
      sw $20, 0($8) #MOSTRAR PIXEL NA TELA
-     
+     sw $20, 34024($8)
      addi $8, $8, 4 #PASSA PARA O PRÓXIMO PIXEL
      addi $11, $11, -1 #REDUZIR VALOR PARA O LAÇO
       j cor7
@@ -124,7 +128,7 @@ cor7:beq $11, $0, somaB1
 somaB1: jal somalinhas2
 solo:beq $11, $0, somaB2
      sw $21, 0($8) #MOSTRAR PIXEL NA TELA
-     
+     sw $21, 34028($8)
      addi $8, $8, 4 #PASSA PARA O PRÓXIMO PIXEL
      addi $11, $11, -1 #REDUZIR VALOR PARA O LAÇO
       j solo
@@ -134,6 +138,7 @@ somaB2: addi $11, $0, 1280
 	add $21, $0, 0x422600 #ACRESCENTANDO COR MARROM
 solo2: beq $11, $0, sprite
        sw $21, 0($8)
+       sw $21, 34032($8)
        
        addi $8, $8, 4 #PASSA PARA O PRÓXIMO PIXEL
        addi $11, $11, -1
@@ -151,57 +156,78 @@ sprite:      lui $9, 0x1001 #INICIALIZAR VALOR PARA IMPRIMIR SPRITES
 ########## SPRITE DE COELHO #############
  cimacabeca:beq $17, $0, ladocabeca0
        sw $22, 1032($9)
+       sw $22, 34036($9)
        add $9, $9, 4
        add $17, $17, -1
        j cimacabeca
  
  ladocabeca0: add $9, $9, 1544
  	     sw $22, 0($9)
+ 	     sw $22, 34040($9)
  	     
  	     add $9, $9, 516
  	     sw $22, 0($9)
+ 	     sw $22, 34044($9)
  	     add $9, $9, 512
  	     sw $22, 0($9)
+ 	     sw $22, 34048($9)
  	     add $9, $9, 512
  	     sw $22, 0($9)
+ 	     sw $22, 34052($9)
  	     add $9, $9, 512
  	     sw $22, 0($9)
+ 	     sw $22, 34056($9)
 
 baixocabeca: add $9, $9, 508
  	     sw $22, 0($9)
+ 	     sw $22, 34060($9)
  	     add $9, $9, 508
  	     sw $22, 0($9)
+ 	     sw $22, 34064($9)
  	     add $9, $9, -4
  	     sw $22, 0($9)
+ 	     sw $22, 34068($9)
  	     add $9, $9, -4
  	     sw $22, 0($9)
+ 	     sw $22, 34072($9)
  	     add $9, $9, -4
  	     sw $22, 0($9)
+ 	     sw $22, 34076($9)
  	     add $9, $9, -4
  	     sw $22, 0($9)
+ 	     sw $22, 34080($9)
  	 
 ladocabeca1: add $9, $9, -516
  	     sw $22, 0($9)
+ 	     sw $22, 34084($9)
  	     add $9, $9, -516
  	     sw $22, 0($9)
+ 	     sw $22, 34088($9)
  	     add $9, $9, -512
  	     sw $22, 0($9)
+ 	     sw $22, 34092($9)
  	     add $9, $9, -512
  	     sw $22, 0($9)
+ 	     sw $22, 34096($9)
  	     add $9, $9, -512
  	     sw $22, 0($9)
+ 	     sw $22, 34100($9)
  	     add $9, $9, -508
  	     sw $22, 0($9)
+ 	     sw $22, 34104($9)
  	     
  	     lui $9, 0x1001 
  	     
  	     add $9, $9, 1544
  	     sw $22, 0($9)
+ 	     sw $22, 34108($9)
  	     
  	     add $17,$0, 5
  	     
 preencher0: beq $17, $0, preencher1
             sw $22, 0($9)
+            sw $22, 34112($9)
+
             add $9, $9, 4
             add $17, $17, -1
             j preencher0
@@ -298,6 +324,8 @@ orelhas:           add $22, $0, 0x6CF305 #COLOCANDO COR DA ORELHA
 
 
 ########## SPRITE DO SEGUNDO COELHO #############
+            
+ 
  sprite2:    lui $9, 0x1001 
 	     add $17, $0, 5
 	     add $9, $9, 1428
@@ -627,9 +655,17 @@ fio: 	 lui $9, 0x1001
        
        
        
-######### MOVIMENTAÇÃO ############       
-
-
+######### MOVIMENTAÇÃO ############  
+      add $3, $3, 22000 #QUANTIDADE DE PASSOS
+  fmv:beq $3, $0, fim
+      lw $4, 34000($9) #PEGA CÓPIA DO CENÁRIO
+      sw $4, 0($9)  #COLOCA A COR DE VOLTA
+      addi $9, $9, 4 #AVANÇA UM PIXEL PARA DIREITA
+      sw $23, 0($9) #COLOCA A COR NO PIXEL
+      jal sleep
+      addi $3, $3, -1 
+      j fmv
+      
       
 ######### MOVIMENTAÇÃO ############        
        
@@ -657,6 +693,7 @@ somalinhas2: addi $11, $0, 512 #SOMANDO PARA IMPRIMIR 5 LINHAS
 # efeito: Preenche o corpo do sprite do coelho com a cor verde
 preencher:  beq $17, $0, volta
             sw $22, 0($9)
+            sw $22, 34116($9)
             add $9, $9, 4
             add $17, $17, -1
             j preencher
@@ -672,7 +709,7 @@ preencherr:  beq $17, $0, volta1
 # --------------------------------------#
 ##Função: Armazenar valor alto no reg $15 e zerar para sair do laço
 # efeito: Fazer com que o movimento seja visível ao mudar posição do pixel
-sleep: addi $15, $0, 8000
+sleep: addi $15, $0, 450
 forsleep: beq $15, $0, fimsleep
           nop
           nop
