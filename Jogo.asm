@@ -17,13 +17,11 @@ coresChao:
       #422600 1 MARROM
       
 coresCoelho:
-	add $22, $0, 0x6CF305 #COR DO CORPO
-	#80461c #SOBRANCELHA
-	#ebe8e6 #OLHOS
-	#3e3f3d #PUPILA
+	add $22, $0, 0x6CF305 #CORPO
+	add $24, $0, 0xebe8e6 #OLHOS
+	add $27, $0, 0x141212 #PUPILA
+	add $26, $0, 0x5fa629 #CORPO CLARO
 	
-	#658668 #CORPO
-	#f1a500 #OLHO 
 	
 coresBomba: add $23, $0 , 0x000000 #COR PRETA
             #5f3716 #SOBRANCELHA
@@ -151,17 +149,12 @@ sprite:      lui $9, 0x1001 #INICIALIZAR VALOR PARA IMPRIMIR SPRITES
 
 
 
-
+add $25, $0, 0xffffff
 
 ########## SPRITE DE COELHO #############
- cimacabeca:beq $17, $0, ladocabeca0
-       sw $22, 1032($9)
-       
-       add $9, $9, 4
-       add $17, $17, -1
-       j cimacabeca
  
- ladocabeca0: add $9, $9, 1544
+ 
+ ladocabeca0: add $9, $9, 4160
  	     sw $22, 0($9)
  	     
  	     
@@ -215,107 +208,114 @@ ladocabeca1: add $9, $9, -516
  	     add $9, $9, -508
  	     sw $22, 0($9)
  	    
- 	     
- 	     lui $9, 0x1001 
- 	     
- 	     add $9, $9, 1544
+ 	     add $9, $9, 4 
  	     sw $22, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 516 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 512 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $24, 0($9) #COLOCAR BRANCO AQUI
+ 	     add $9, $9, 4 #COLOCAR BRANCO AQ
+ 	     sw $24, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $24, 0($9) #COLOCAR BRANCO AQUI
+ 	     add $9, $9, 4 
+ 	     sw $24, 0($9) #COLOCAR BRANCO AQUI
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 512
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4  #COLOCAR PRETO AQUI
+ 	     sw $27, 0($9) ##########################
+ 	     add $9, $9, -4  #COLOCAR BRANCO AQUI
+ 	     sw $24, 0($9)
+ 	     add $9, $9, -4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4  #COLOCAR PRETO AQUI
+ 	     sw $27, 0($9)
+ 	     add $9, $9, -4  #COLOCAR BRANCO AQUI
+ 	     sw $24, 0($9)
+ 	     add $9, $9, -4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 512
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 516
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -8 
+ 	     sw $26, 0($9)
+ 	     add $9, $9, -4 #VERDE CLARO AQUI
+ 	     sw $27, 0($9)
+ 	     add $9, $9, -4  #COLOCAR PRETO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, -4 #VERDE CLARO AQUI
+ 	     sw $27, 0($9)
+ 	     add $9, $9, -4  #COLOCAR PRETO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, -8  
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 512 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	   
+ 	     
+ 	    
  	     
  	     
- 	     add $17,$0, 5
  	     
-preencher0: beq $17, $0, preencher1
-            sw $22, 0($9)
-           
+ 	      
+ 	     
+ 	     
 
-            add $9, $9, 4
-            add $17, $17, -1
-            j preencher0
-            
-preencher1:  add $17,$0, 7
- 	     add $9, $9, 488
- 	     jal preencher
- 	     
- 	     add $17,$0, 7
- 	     add $9, $9, 484
- 	     jal preencher
- 	     
- 	     add $17,$0, 8
- 	     add $9, $9, 480
- 	     jal preencher
- 	     
- 	     add $17,$0, 9
- 	     add $9, $9, 476
- 	     jal preencher
- 	     
- 	     add $17,$0, 6
- 	     add $9, $9, 484
- 	     jal preencher
- 	     
-imprimirsobrancelha: add $22, $0, 0x80461c #COLOCANDO COR SOBRANCELHA
-	             lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR SOBRANCELHA
-	     
-	             add $9, $9, 2056
- 	             sw $22, 0($9)
- 	             
- 	             add $9, $9, 516
- 	             sw $22, 0($9)
- 	             
- 	             add $9, $9, 8
- 	             sw $22, 0($9)
- 	             
- 	             add $9, $9, -508
- 	             sw $22, 0($9)
- 	            
- 	            
-olhos: 	             add $22, $0, 0xebe8e6 #COLOCANDO COR DOS OLHOS
-	             lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR OLHOS
-	             
-	             add $9, $9, 2568
- 	             sw $22, 0($9)
- 	             add $9, $9, 512
- 	             sw $22, 0($9)
- 	             add $9, $9, 12
- 	             sw $22, 0($9)
- 	             add $9, $9, -508
- 	             sw $22, 0($9)
- 	             
-pupila: 	     add $22, $0, 0x3e3f3d #COLOCANDO COR DA PUPILA
-	             lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR PUPILA
-	             
-	             add $9, $9, 3084
- 	             sw $22, 0($9)
- 	             add $9, $9, 12
- 	             sw $22, 0($9)
- 	             
- 	             
-dentinho:	   add $22, $0, 0xebe8e6 #COLOCANDO COR DO DENTINHO
-	           lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR DENTINHO 
-	            
-	           add $9, $9, 4112
- 	           sw $22, 0($9)
-
-orelhas:           add $22, $0, 0x6CF305 #COLOCANDO COR DA ORELHA
-	           lui $9, 0x1001  #REINICIANDO PARA IMPRIMIR ORELHA
-	           
-	           add $9, $9, 8
- 	           sw $22, 0($9)
- 	           add $9, $9, 4
- 	           sw $22, 0($9)
- 	           add $9, $9, 508
- 	           sw $22, 0($9)
- 	           add $9, $9, 4
- 	           sw $22, 0($9)
- 	           
- 	           
- 	           add $9, $9, 8
- 	           sw $22, 0($9)
- 	           add $9, $9, 4
- 	           sw $22, 0($9)
- 	           add $9, $9, -512
- 	           sw $22, 0($9)
- 	           add $9, $9, -4
- 	           sw $22, 0($9)
 ########## SPRITE DE COELHO #############    
 
 
@@ -324,161 +324,162 @@ orelhas:           add $22, $0, 0x6CF305 #COLOCANDO COR DA ORELHA
 
 
 ########## SPRITE DO SEGUNDO COELHO #############
-            
- 
- sprite2:    lui $9, 0x1001 
-	     add $17, $0, 5
-	     add $9, $9, 1428
-	     
-cimacabeca2:beq $17, $0, ladocabeca2
-           sw $22, 0($9)
-           add $9, $9, 4
-           add $17, $17, -1
-           j cimacabeca2
 
-ladocabeca2: add $9, $9, 512
+ lui $9, 0x1001
+ ladocabeca111: add $9, $9, 936
  	     sw $22, 0($9)
+ 	     
  	     
  	     add $9, $9, 516
  	     sw $22, 0($9)
- 	     add $9, $9, 512
- 	     sw $22, 0($9)
- 	     add $9, $9, 512
- 	     sw $22, 0($9)
+ 	    
  	     add $9, $9, 512
  	     sw $22, 0($9)
  	     
-baixocabeca2: add $9, $9, 508
+ 	     add $9, $9, 512
  	     sw $22, 0($9)
+ 	     
+ 	     add $9, $9, 512
+ 	     sw $22, 0($9)
+ 	     
+
+baixocabeca1: add $9, $9, 508
+ 	     sw $22, 0($9)
+ 	     
  	     add $9, $9, 508
  	     sw $22, 0($9)
+ 	     
  	     add $9, $9, -4
  	     sw $22, 0($9)
+ 	     
  	     add $9, $9, -4
  	     sw $22, 0($9)
+ 	     
  	     add $9, $9, -4
  	     sw $22, 0($9)
+ 	     
  	     add $9, $9, -4
  	     sw $22, 0($9)
-
-ladocabeca22: add $9, $9, -516
+ 	    
+ 	 
+ladocabeca11: add $9, $9, -516
  	     sw $22, 0($9)
+ 	     
  	     add $9, $9, -516
  	     sw $22, 0($9)
+ 	     
  	     add $9, $9, -512
  	     sw $22, 0($9)
+ 	     
  	     add $9, $9, -512
  	     sw $22, 0($9)
+ 	     
  	     add $9, $9, -512
  	     sw $22, 0($9)
+ 	     
  	     add $9, $9, -508
  	     sw $22, 0($9)
-
-	     lui $9, 0x1001 
- 	     
- 	     add $9, $9, 1940
+ 	    
+ 	     add $9, $9, 4 
  	     sw $22, 0($9)
- 	     
- 	     add $17,$0, 5
- 	     
- 	     
- preencher2: beq $17, $0, preencher22
-            sw $22, 0($9)
-            add $9, $9, 4
-            add $17, $17, -1
-            j preencher2
-            
-preencher22:  add $17,$0, 7
- 	      add $9, $9, 488
- 	      jal preencher
- 	     
- 	      add $17,$0, 7
- 	      add $9, $9, 484
- 	      jal preencher
- 	      
- 	      add $17,$0, 8
- 	      add $9, $9, 480
- 	      jal preencher
- 	      
- 	      add $17,$0, 8
- 	      add $9, $9, 480
- 	      jal preencher
- 	      
- 	      add $17,$0, 6
- 	      add $9, $9, 484
- 	      jal preencher
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 516 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 512 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $24, 0($9) #COLOCAR BRANCO AQUI
+ 	     add $9, $9, 4 #COLOCAR BRANCO AQ
+ 	     sw $24, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $24, 0($9) #COLOCAR BRANCO AQUI
+ 	     add $9, $9, 4 
+ 	     sw $24, 0($9) #COLOCAR BRANCO AQUI
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 512
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4  #COLOCAR PRETO AQUI
+ 	     sw $27, 0($9) ##########################
+ 	     add $9, $9, -4  #COLOCAR BRANCO AQUI
+ 	     sw $24, 0($9)
+ 	     add $9, $9, -4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -4  #COLOCAR PRETO AQUI
+ 	     sw $27, 0($9)
+ 	     add $9, $9, -4  #COLOCAR BRANCO AQUI
+ 	     sw $24, 0($9)
+ 	     add $9, $9, -4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 512
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 516
+ 	     sw $22, 0($9)
+ 	     add $9, $9, -8 
+ 	     sw $26, 0($9)
+ 	     add $9, $9, -4 #VERDE CLARO AQUI
+ 	     sw $27, 0($9)
+ 	     add $9, $9, -4  #COLOCAR PRETO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, -4 #VERDE CLARO AQUI
+ 	     sw $27, 0($9)
+ 	     add $9, $9, -4  #COLOCAR PRETO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, -8  
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 512 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 #VERDE CLARO AQUI
+ 	     sw $26, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	     add $9, $9, 4 
+ 	     sw $22, 0($9)
+ 	   
  
-      
- 	      
-imprimirsobrancelha2: add $22, $0, 0x80461c #COLOCANDO COR SOBRANCELHA
-	             lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR SOBRANCELHA
-	             
-	             add $9, $9, 2452
- 	             sw $22, 0($9)
- 	             
- 	             add $9, $9, 516
- 	             sw $22, 0($9)
- 	             
- 	             add $9, $9, 8
- 	             sw $22, 0($9)
- 	             
- 	             add $9, $9, -508
- 	             sw $22, 0($9)
- 	             
- 	             
-imprimindoolhos:     add $22, $0, 0xebe8e6 #COLOCANDO COR DOS OLHOS
-	             lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR OLHOS
-	             
-	             add $9, $9, 2964
- 	             sw $22, 0($9)
- 	             add $9, $9, 512
- 	             sw $22, 0($9)
- 	             add $9, $9, 12
- 	             sw $22, 0($9)
- 	             add $9, $9, -508
- 	             sw $22, 0($9)
- 	             
- 	             
-pupila2:             add $22, $0, 0x3e3f3d #COLOCANDO COR DA PUPILA
-	             lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR PUPILA
-	             
-	             add $9, $9, 3480
- 	             sw $22, 0($9)
- 	             add $9, $9, 12
- 	             sw $22, 0($9)	             
- 	             
- 	             
- 	             
-dentinho2:	   add $22, $0, 0xebe8e6 #COLOCANDO COR DO DENTINHO
-	           lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR DENTINHO 
-	            
-	           add $9, $9, 4508
- 	           sw $22, 0($9)
- 	           
-
-orelhas2:           add $22, $0, 0x6CF305 #COLOCANDO COR DA ORELHA
-	           lui $9, 0x1001  #REINICIANDO PARA IMPRIMIR ORELHA
-	           
-	           add $9, $9, 404
- 	           sw $22, 0($9)
- 	           add $9, $9, 4
- 	           sw $22, 0($9)
- 	           add $9, $9, 508
- 	           sw $22, 0($9)
- 	           add $9, $9, 4
- 	           sw $22, 0($9)
- 	           
- 	           
- 	           add $9, $9, 8
- 	           sw $22, 0($9)
- 	           add $9, $9, 4
- 	           sw $22, 0($9)
- 	           add $9, $9, -512
- 	           sw $22, 0($9)
- 	           add $9, $9, -4
- 	           sw $22, 0($9)
-	             
-	             
  	    
 ########## SPRITE DO SEGUNDO COELHO #############
               
@@ -654,22 +655,36 @@ fio: 	 lui $9, 0x1001
        
        
        
-       lui $9, 0x1001
 ######### MOVIMENTAÇÃO ############  
-      add $3, $3, 22000 #QUANTIDADE DE PASSOS
-  fmv:beq $3, $0, fim
-      lw $4, 34000($9) #PEGA CÓPIA DO CENÁRIO
-      sw $4, 0($9)  #COLOCA A COR DE VOLTA
-      addi $9, $9, 4 #AVANÇA UM PIXEL PARA DIREITA
-      sw $23, 0($9) #COLOCA A COR NO PIXEL
-      jal sleep
-      addi $3, $3, -1 
-      j fmv
+ #     add $3, $3, 22000 #QUANTIDADE DE PASSOS
+ # fmv:beq $3, $0, fim
+  #    lw $4, 34000($9) #PEGA CÓPIA DO CENÁRIO
+   #   sw $4, 0($9)  #COLOCA A COR DE VOLTA
+    #  addi $9, $9, 4 #AVANÇA UM PIXEL PARA DIREITA
+      #sw $23, 0($9) #COLOCA A COR NO PIXEL
+     # jal sleep
+     # addi $3, $3, -1 
+     # j fmv
       
       
-######### MOVIMENTAÇÃO ############        
+######### MOVIMENTAÇÃO ############             
+ lui $4, 0x1001
+ add $22, $0, 0x6CF305 #colocando cor do corpo
+
+ #add $4, $4, 4
+ #add $4, $4,  1936
+ #sw $23, 0($4)
+ 
+ 
+ 
        
-       
+             
+                   
+                         
+                               
+                                     
+                                           
+                                                       
 fim: addi $2, $0, 10
      syscall
      
