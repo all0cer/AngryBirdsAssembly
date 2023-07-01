@@ -24,11 +24,11 @@ coresCoelho:
 	
 	
 coresBomba: add $23, $0 , 0x000000 #COR PRETA
-            #5f3716 #SOBRANCELHA
-            #f8f5f1 #OLHOS
-            #f10e0e #PUPILA
-            #f5e800 #BICO
-            #595050 #BARRIGA
+            add $18, $0, 0x5f3716 #MARROM
+            add $16, $0, 0xf8f5f1 #OLHOS
+            add $15, $0, 0xf10e0e #PUPILA
+            add $14, $0, 0xf5e800 #BICO
+            add $13, $0, 0x595050 #BARRIGA
 	
 ########## CORES ##############
 
@@ -129,10 +129,10 @@ solo:beq $11, $0, somaB2
      sw $21, 34000($8)
      addi $8, $8, 4 #PASSA PARA O PRÓXIMO PIXEL
      addi $11, $11, -1 #REDUZIR VALOR PARA O LAÇO
-      j solo
+     j solo
 
 
-somaB2: addi $11, $0, 1280
+somaB2: add $11, $0, 1280
 	add $21, $0, 0x422600 #ACRESCENTANDO COR MARROM
 solo2: beq $11, $0, sprite
        sw $21, 0($8)
@@ -147,9 +147,6 @@ solo2: beq $11, $0, sprite
 sprite:      lui $9, 0x1001 #INICIALIZAR VALOR PARA IMPRIMIR SPRITES 
 	     add $17, $0, 5
 
-
-
-add $25, $0, 0xffffff
 
 ########## SPRITE DE COELHO #############
  
@@ -307,7 +304,7 @@ ladocabeca1: add $9, $9, -516
  	     add $9, $9, 4 
  	     sw $22, 0($9)
  	   
- 	     
+
  	    
  	     
  	     
@@ -493,7 +490,7 @@ ladocabeca11: add $9, $9, -516
 ########## SPRITE DO BOMBA #############
 sprite3:     lui $9, 0x1001 
 	     add $17, $0, 5
-	     add $9, $9, 21908
+	     add $9, $9, 21536
              
 cimacabeca3:beq $17, $0, ladocabeca3 #m
             sw $23, 0($9)
@@ -538,143 +535,141 @@ ladocabeca33: add $9, $9, -516
  	     sw $23, 0($9)
  	     add $9, $9, -508
  	     sw $23, 0($9)
-
-	     lui $9, 0x1001 
- 	     
- 	     add $9, $9, 22420
+ 	     add $9, $9, 4
+ 	     sw $23, 0($9)
+ 	     add $9, $9, 4
+ 	     sw $23, 0($9)
+ 	     add $9, $9, 4
+ 	     sw $23, 0($9)
+ 	     add $9, $9, 4
+ 	     sw $23, 0($9)
+ 	     add $9, $9, 4
  	     sw $23, 0($9)
  	     
- 	     add $17,$0, 5	
-		
-		
-preencher3: beq $17, $0, preencher33
-            sw $23, 0($9)
-            add $9, $9, 4
-            add $17, $17, -1
-            j preencher3
-            
-preencher33:  add $17,$0, 7
- 	      add $9, $9, 488
- 	      jal preencherr
- 	     
- 	      add $17,$0, 7
- 	      add $9, $9, 484
- 	      jal preencherr
- 	      
- 	      add $17,$0, 8
- 	      add $9, $9, 480
- 	      jal preencherr
- 	      
- 	      add $17,$0, 8
- 	      add $9, $9, 480
- 	      jal preencherr
- 	      
- 	      add $17,$0, 6
- 	      add $9, $9, 484
- 	      jal preencherr
-
-imprimirsobrancelha3:add $22, $0, 0x80461c #COLOCANDO COR SOBRANCELHA
-	             lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR SOBRANCELHA
-	             
-	             add $9, $9, 22932
- 	             sw $22, 0($9)
- 	             
- 	             add $9, $9, 516
- 	             sw $22, 0($9)
- 	             
- 	             add $9, $9, 8
- 	             sw $22, 0($9)
- 	             
- 	             add $9, $9, -508
- 	             sw $22, 0($9)
-
-imprimindoolhos3:    add $22, $0, 0xebe8e6 #COLOCANDO COR DOS OLHOS
-		     add $23, $0 , 0xf10e0e#COLOCANDO COR DA PUPILA
-	             lui $9, 0x1001 #REINICIANDO PARA IMPRIMIR OLHOS
-	             
-	             add $9, $9, 23444
- 	             sw $22, 0($9)
- 	             add $9, $9, 512
- 	             sw $22, 0($9)
- 	             
- 	             
-pupi: 	             add $9, $9, 4
- 	             sw $23, 0($9)
- 	             
- 	             
- 	             add $9, $9, 12
- 	             sw $22, 0($9)
- 	             
-pup: 	             add $9, $9, 4
- 	             sw $23, 0($9)
- 	             
- 	             add $9, $9, -512
- 	             sw $22, 0($9)
- 	             
- 	             add $9, $9, -4
- 	             sw $22, 0($9)
- 	             
-bico:        lui $9, 0x1001 
- 	     add $23, $0, 0xf5e800 #COR AMARELA
- 	     
- 	     add $9, $9, 24476
+ 	     add $9, $9, 512
+ 	     sw $18, 0($9)
+ 	     add $9, $9, -4
  	     sw $23, 0($9)
+	     add $9, $9, -4
+ 	     sw $23, 0($9)
+ 	     add $9, $9, -4
+ 	     sw $23, 0($9)
+ 	     add $9, $9, -4 #colocar marrom aqui
+ 	     sw $18, 0($9)
+ 	     add $9, $9, -4 
+ 	     sw $23, 0($9)
+ 	     add $9, $9, 512 #colocar branco aqui
+ 	     sw $16, 0($9)
+ 	     add $9, $9, 4 #colocar branco aqui
+ 	     sw $16, 0($9)
+ 	     add $9, $9, 4 #colocar marrom aqui
+ 	     sw $18, 0($9)
+ 	      add $9, $9, 4
+ 	     sw $23, 0($9)
+ 	     add $9, $9, 4 #colocar marrom aqui
+ 	     sw $18, 0($9)
+ 	     add $9, $9, 4 #colocar branco aqui
+ 	     sw $16, 0($9)
+ 	     add $9, $9, 4 #colocar branco aqui
+ 	     sw $16, 0($9)
+ 	     add $9, $9, 512 #colocar vermelho aqui
+ 	     sw $15, 0($9)
+ 	     add $9, $9, -4 #colocar branco aqui
+ 	     sw $16, 0($9)
+ 	      add $9, $9, -4
+ 	     sw $23, 0($9)
+ 	      add $9, $9, -4
+ 	     sw $23, 0($9)
+ 	      add $9, $9, -4
+ 	     sw $23, 0($9)
+ 	      add $9, $9, -4 #colocar vermelho aqui
+ 	     sw $15, 0($9)
+ 	     add $9, $9, -4 #colocar branco aqui
+ 	     sw $16, 0($9)
+ 	     add $9, $9, 512
+ 	     sw $23, 0($9)
+ 	      add $9, $9, 4
+ 	     sw $23, 0($9)
+ 	      add $9, $9, 4
+ 	     sw $23, 0($9)
+ 	     add $9, $9, 4 #colocar amarelo aqui
+ 	     sw $14, 0($9)
+ 	     add $9, $9, 4 #colocar amarelo aqui
+ 	     sw $14, 0($9)
+ 	      add $9, $9, 4
+ 	     sw $23, 0($9)
+ 	      add $9, $9, 4
+ 	     sw $23, 0($9)
+ 	      add $9, $9, 512
+ 	     sw $23, 0($9)
+ 	     add $9, $9, -4 #colocar amarelo aqui
+ 	     sw $14, 0($9)
+ 	     add $9, $9, -4 #colocar amarelo aqui
+ 	     sw $14, 0($9)
+ 	     add $9, $9, -4 #colocar amarelo aqui
+ 	     sw $14, 0($9)
+ 	     add $9, $9, -4 #colocar Cinza aqui
+ 	     sw $13, 0($9)
+ 	     add $9, $9, -4 
+ 	     sw $23, 0($9)
+ 	     add $9, $9, 512 #colocar Cinza aqui
+ 	     sw $13, 0($9)
+ 	      add $9, $9, 4 #colocar Cinza aqui
+ 	     sw $13, 0($9)
+ 	      add $9, $9, 4 #colocar Cinza aqui
+ 	     sw $13, 0($9)
+ 	      add $9, $9, 4 #colocar Cinza aqui
+ 	     sw $13, 0($9)
+ 	      add $9, $9, 4 #colocar Cinza aqui
+ 	     sw $13, 0($9)
  	     
- 	    add $9, $9, 4
- 	    sw $23, 0($9)
- 	    
- 	    add $9, $9, 516
- 	    sw $23, 0($9)
  	     
- 	    add $9, $9, -4
- 	    sw $23, 0($9)
- 	    
- 	    add $9, $9, -4
- 	    sw $23, 0($9)
- 	    
-fio: 	 lui $9, 0x1001 
- 	 add $23, $0, 0x0000000 #COR PRETA
+pavio: lui $9, 0x1001
+       add $9, $9, 21032
+       sw $23, 0($9)
+       add $9, $9, -512
+       sw $23, 0($9)
+       add $9, $9, -512
+       sw $23, 0($9)
+       add $9, $9, -512
+       sw $23, 0($9)
+       add $13, $0 , 0x0059f7
+       add $9, $9, -508
+       sw $13, 0($9)
+       
+########## MIRA ##########
+lui $9, 0x1001
+add $9, $9, 18480
+sw $18, 0($9)
+add $9, $9, -508
+sw $18, 0($9)
+add $9, $9, -508
+sw $18, 0($9)
+########## MIRA ##########	                       
  	 
- 	 add $9, $9, 21404
- 	 sw $23, 0($9)
- 	 
- 	 add $9, $9, -512
- 	 sw $23, 0($9)
- 	 
- 	 
- 	 add $23, $0, 0x79044f
- 	 
- 	 add $9, $9, -508
- 	 sw $23, 0($9)                             
- 	 
- 	   
-
+ 	  
 ########## SPRITE DO BOMBA #############                                                    
                                    
        
        
        
        
-######### MOVIMENTAÇÃO ############  
- #     add $3, $3, 22000 #QUANTIDADE DE PASSOS
- # fmv:beq $3, $0, fim
-  #    lw $4, 34000($9) #PEGA CÓPIA DO CENÁRIO
-   #   sw $4, 0($9)  #COLOCA A COR DE VOLTA
-    #  addi $9, $9, 4 #AVANÇA UM PIXEL PARA DIREITA
-      #sw $23, 0($9) #COLOCA A COR NO PIXEL
-     # jal sleep
-     # addi $3, $3, -1 
-     # j fmv
+######### MOVIMENTAÇÃO ############ 
+  lui $9, 0x1001
+  add $9, $9, 17464 #INICIO DO DISPARO #colocar para somar com reg que controla a mira
+  add $3, $3, 800 #QUANTIDADE DE PASSOS
+  fmv:beq $3, $0, fim
+      lw $23, 34000($9) #PEGA CÓPIA DO CENÁRIO
+      sw $23, 0($9)  #COLOCA A COR DE VOLTA
+      addi $9, $9, -508 #AVANÇA UM PIXEL PARA DIREITA # colocar de acordo com valor da mira
+      sw $18, 0($9) #COLOCA A COR NO PIXEL
+      jal sleep
+      addi $3, $3, -1 
+      j fmv
       
-      
+   
 ######### MOVIMENTAÇÃO ############             
- lui $4, 0x1001
- add $22, $0, 0x6CF305 #colocando cor do corpo
 
- #add $4, $4, 4
- #add $4, $4,  1936
- #sw $23, 0($4)
- 
  
  
        
@@ -703,27 +698,11 @@ somalinhas: addi $11, $0, 896 #SOMANDO PARA IMPRIMIR 5 LINHAS
 somalinhas2: addi $11, $0, 512 #SOMANDO PARA IMPRIMIR 5 LINHAS 
 	     jr $31
 	    			
-# --------------------------------------#
-##Função: acrescentar a cor no end de memoria em $9 no valor que está em $17
-# efeito: Preenche o corpo do sprite do coelho com a cor verde
-preencher:  beq $17, $0, volta
-            sw $22, 0($9)
-            add $9, $9, 4
-            add $17, $17, -1
-            j preencher
-	    volta: jr $31
-	    
-preencherr:  beq $17, $0, volta1
-            sw $23, 0($9)
-            add $9, $9, 4
-            add $17, $17, -1
-            j preencherr
-	    volta1: jr $31
 
 # --------------------------------------#
 ##Função: Armazenar valor alto no reg $15 e zerar para sair do laço
 # efeito: Fazer com que o movimento seja visível ao mudar posição do pixel
-sleep: addi $15, $0, 250
+sleep: addi $15, $0, 500
 forsleep: beq $15, $0, fimsleep
           nop
           nop
