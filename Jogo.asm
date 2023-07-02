@@ -1,6 +1,7 @@
 .text
 
 main: lui $8, 0x1001 #INICIALIZANDO NO ENDEREÇO 1001
+      lui $4, 0x1001
 ########## CORES ##############
 coresCeu:     
       add $20, $0, 0xffff00 #COR AMARELA 0
@@ -29,6 +30,11 @@ coresBomba: add $23, $0 , 0x000000 #COR PRETA
             add $15, $0, 0xf10e0e #PUPILA
             add $14, $0, 0xf5e800 #BICO
             add $13, $0, 0x595050 #BARRIGA
+            
+            
+            
+digitos:   addi $6, $0, 's'
+      
 	
 ########## CORES ##############
 
@@ -637,53 +643,54 @@ pavio: lui $9, 0x1001
        add $9, $9, -508
        sw $13, 0($9)
        
-########## MIRA ##########
-lui $9, 0x1001
-add $9, $9, 18480
+       
+       
+       ##### digitos ######
+      lw $28, 0($4)
+      beq $28, $0, naodig
+      lw $28, 4($4)
+      beq $28, $6, digS      
+      
+      
+      
+      
+      
+########## MIRA1 ##########
+mira1:lui $9, 0x1001
+add $9, $9, 20016 #INICIO DA MIRA
 sw $18, 0($9)
 add $9, $9, -508
 sw $18, 0($9)
-add $9, $9, -508
-sw $18, 0($9)
-########## MIRA ##########	                       
+########## MIRA1 ##########	                      	                       
  	 
  	  
 ########## SPRITE DO BOMBA #############                                                    
-                                   
+   
        
-       
-       
-       
-######### MOVIMENTAÇÃO ############ 
-  lui $9, 0x1001
-  add $9, $9, 17464 #INICIO DO DISPARO #colocar para somar com reg que controla a mira
-  add $3, $3, 800 #QUANTIDADE DE PASSOS
+             
+
+
+                                                                       
+                                                       
+
+######### MOVIMENTAÇÃO1############ 
+atirar:  lui $9, 0x1001
+      add $9, $9, 19000#INICIO DO DISPARO #colocar para somar com reg que controla a mira
+      beq $28, $0, naodig #####COLOCAR PARA RECEBER E ATIRAR
+      lw $28, 4($4)
+      beq $28, $6, digS #####COLOCAR PARA RECEBER E ATIRAR
+  add $3, $0, $7#QUANTIDADE DE PASSOS
   fmv:beq $3, $0, fim
       lw $23, 34000($9) #PEGA CÓPIA DO CENÁRIO
       sw $23, 0($9)  #COLOCA A COR DE VOLTA
-      addi $9, $9, -508 #AVANÇA UM PIXEL PARA DIREITA # colocar de acordo com valor da mira
+      add $9, $9, $5   #AVANÇA  # ANGULO DO TIRO
       sw $18, 0($9) #COLOCA A COR NO PIXEL
-      jal sleep
+      jal sleep  
       addi $3, $3, -1 
       j fmv
-      
-   
-######### MOVIMENTAÇÃO ############             
-
- 
- 
-       
-             
-                   
-                         
-                               
-                                     
-                                           
-                                                       
-fim: addi $2, $0, 10
-     syscall
-     
-     
+######### MOVIMENTAÇÃO ############      
+   fim: addi $2, $0, 10
+     syscall  
      
 ############# FUNÇÕES ###################  
 # --------------------------------------#
@@ -699,10 +706,12 @@ somalinhas2: addi $11, $0, 512 #SOMANDO PARA IMPRIMIR 5 LINHAS
 	     jr $31
 	    			
 
+
+
 # --------------------------------------#
 ##Função: Armazenar valor alto no reg $15 e zerar para sair do laço
 # efeito: Fazer com que o movimento seja visível ao mudar posição do pixel
-sleep: addi $15, $0, 500
+sleep: addi $15, $0, 20000
 forsleep: beq $15, $0, fimsleep
           nop
           nop
@@ -711,3 +720,16 @@ forsleep: beq $15, $0, fimsleep
           addi $15, $15, -1
           j forsleep  
 fimsleep: jr $31
+
+
+digS: add $5, $0, -500
+      add $7, $0, 30
+      jr $31
+      
+digA: add $5, $0, -512
+      add $7, $0, 24
+      jr $31
+
+naodig:      
+      jal forsleep
+      j atirar
