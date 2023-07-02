@@ -679,6 +679,7 @@ atirar:  lui $9, 0x1001
       beq $28, $0, naodig #####COLOCAR PARA RECEBER E ATIRAR
       lw $28, 4($4)
       beq $28, $6, digS #####COLOCAR PARA RECEBER E ATIRAR
+      beq $28, $6, digA #####COLOCAR PARA RECEBER E ATIRAR
   add $3, $0, $7#QUANTIDADE DE PASSOS
   fmv:beq $3, $0, fim
       lw $23, 34000($9) #PEGA CÓPIA DO CENÁRIO
@@ -724,11 +725,11 @@ fimsleep: jr $31
 
 digS: add $5, $0, -500
       add $7, $0, 30
-      jr $31
+      j fmv
       
 digA: add $5, $0, -512
       add $7, $0, 24
-      jr $31
+      j fmv
 
 naodig:      
       jal forsleep
