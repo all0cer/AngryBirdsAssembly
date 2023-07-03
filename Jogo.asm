@@ -1,7 +1,7 @@
 .text
 
 main: lui $8, 0x1001 #INICIALIZANDO NO ENDEREÇO 1001
-      lui $4, 0x1001
+      lui $4, 0xffff
 ########## CORES ##############
 coresCeu:     
       add $20, $0, 0xffff00 #COR AMARELA 0
@@ -34,6 +34,7 @@ coresBomba: add $23, $0 , 0x000000 #COR PRETA
             
             
 digitos:   addi $6, $0, 's'
+           addi $9, $0, 'a'
       
 	
 ########## CORES ##############
@@ -646,11 +647,7 @@ pavio: lui $9, 0x1001
        
        
        ##### digitos ######
-      lw $28, 0($4)
-      beq $28, $0, naodig
-      lw $28, 4($4)
-      beq $28, $6, digS      
-      
+
       
       
       
@@ -676,12 +673,14 @@ sw $18, 0($9)
 ######### MOVIMENTAÇÃO1############ 
 atirar:  lui $9, 0x1001
       add $9, $9, 19000#INICIO DO DISPARO #colocar para somar com reg que controla a mira
-      beq $28, $0, naodig #####COLOCAR PARA RECEBER E ATIRAR
+dig:  lw $28, 0($4)
+      beq $28, $0, naodig
       lw $28, 4($4)
-      beq $28, $6, digS #####COLOCAR PARA RECEBER E ATIRAR
-      beq $28, $6, digA #####COLOCAR PARA RECEBER E ATIRAR
-  add $3, $0, $7#QUANTIDADE DE PASSOS
-  fmv:beq $3, $0, fim
+      beq $28, $6, digS   
+      beq $28, $9, digA 
+      
+fmv:  add $3, $0, $7#QUANTIDADE DE PASSOS
+      beq $3, $0, fim
       lw $23, 34000($9) #PEGA CÓPIA DO CENÁRIO
       sw $23, 0($9)  #COLOCA A COR DE VOLTA
       add $9, $9, $5   #AVANÇA  # ANGULO DO TIRO
@@ -689,6 +688,7 @@ atirar:  lui $9, 0x1001
       jal sleep  
       addi $3, $3, -1 
       j fmv
+      j atirar
 ######### MOVIMENTAÇÃO ############      
    fim: addi $2, $0, 10
      syscall  
@@ -712,7 +712,7 @@ somalinhas2: addi $11, $0, 512 #SOMANDO PARA IMPRIMIR 5 LINHAS
 # --------------------------------------#
 ##Função: Armazenar valor alto no reg $15 e zerar para sair do laço
 # efeito: Fazer com que o movimento seja visível ao mudar posição do pixel
-sleep: addi $15, $0, 20000
+sleep: addi $15, $0, 2
 forsleep: beq $15, $0, fimsleep
           nop
           nop
@@ -725,12 +725,12 @@ fimsleep: jr $31
 
 digS: add $5, $0, -500
       add $7, $0, 30
-      j fmv
+      j naodig
       
 digA: add $5, $0, -512
       add $7, $0, 24
-      j fmv
+      j naodig
 
 naodig:      
-      jal forsleep
-      j atirar
+      jal sleep
+      j fmv
