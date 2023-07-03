@@ -34,7 +34,7 @@ coresBomba: add $23, $0 , 0x000000 #COR PRETA
             
             
 digitos:   addi $6, $0, 's'
-           addi $9, $0, 'a'
+           addi $29, $0, 'a'
       
 	
 ########## CORES ##############
@@ -677,10 +677,11 @@ dig:  lw $28, 0($4)
       beq $28, $0, naodig
       lw $28, 4($4)
       beq $28, $6, digS   
-      beq $28, $9, digA 
+      beq $28, $29, digA 
       
-fmv:  add $3, $0, $7#QUANTIDADE DE PASSOS
-      beq $3, $0, fim
+sumuv:  add $3, $0, $7#QUANTIDADE DE PASSOS
+fmv:
+      beq $3, $0, atirar
       lw $23, 34000($9) #PEGA CÓPIA DO CENÁRIO
       sw $23, 0($9)  #COLOCA A COR DE VOLTA
       add $9, $9, $5   #AVANÇA  # ANGULO DO TIRO
@@ -712,7 +713,7 @@ somalinhas2: addi $11, $0, 512 #SOMANDO PARA IMPRIMIR 5 LINHAS
 # --------------------------------------#
 ##Função: Armazenar valor alto no reg $15 e zerar para sair do laço
 # efeito: Fazer com que o movimento seja visível ao mudar posição do pixel
-sleep: addi $15, $0, 2
+sleep: addi $15, $0, 400
 forsleep: beq $15, $0, fimsleep
           nop
           nop
@@ -733,4 +734,4 @@ digA: add $5, $0, -512
 
 naodig:      
       jal sleep
-      j fmv
+      j sumuv
