@@ -684,7 +684,7 @@ fmv:
       beq $3, $0, atirar
       lw $23, 34000($9) #PEGA CÓPIA DO CENÁRIO
       sw $23, 0($9)  #COLOCA A COR DE VOLTA
-      add $9, $9, $5   #AVANÇA  # ANGULO DO TIRO
+      add $9, $9, 10   #AVANÇA  # ANGULO DO TIRO
       sw $18, 0($9) #COLOCA A COR NO PIXEL
       jal sleep  
       addi $3, $3, -1 
@@ -713,7 +713,7 @@ somalinhas2: addi $11, $0, 512 #SOMANDO PARA IMPRIMIR 5 LINHAS
 # --------------------------------------#
 ##Função: Armazenar valor alto no reg $15 e zerar para sair do laço
 # efeito: Fazer com que o movimento seja visível ao mudar posição do pixel
-sleep: addi $15, $0, 400
+sleep: addi $15, $0, 1000
 forsleep: beq $15, $0, fimsleep
           nop
           nop
@@ -724,11 +724,11 @@ forsleep: beq $15, $0, fimsleep
 fimsleep: jr $31
 
 
-digS: add $5, $0, -500
+digS: add $5, $5, -500
       add $7, $0, 30
       j naodig
       
-digA: add $5, $0, -512
+digA: add $5, $5, -512
       add $7, $0, 24
       j naodig
 
