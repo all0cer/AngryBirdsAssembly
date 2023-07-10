@@ -32,10 +32,7 @@ coresBomba: add $23, $0 , 0x000000 #COR PRETA
             add $13, $0, 0x595050 #BARRIGA
             
             
-            
-digitos:   addi $6, $0, 's'
-           addi $29, $0, 'a'
-      
+
 	
 ########## CORES ##############
 
@@ -152,7 +149,7 @@ solo2: beq $11, $0, sprite
 
 
 sprite:      lui $9, 0x1001 #INICIALIZAR VALOR PARA IMPRIMIR SPRITES 
-	     add $17, $0, 5
+	     
 
 
 ########## SPRITE DE COELHO #############
@@ -666,7 +663,10 @@ sw $18, 0($9)
        
              
 
-
+digitos:   addi $6, $0, 's'
+           addi $29, $0, 'w'
+           addi $17, $0, 'a'
+           addi $18, $0, 'd'
                                                                        
                                                        
 
@@ -677,14 +677,17 @@ dig:  lw $28, 0($4)
       beq $28, $0, naodig
       lw $28, 4($4)
       beq $28, $6, digS   
-      beq $28, $29, digA 
+      beq $28, $29, digW 
+      beq $28, $17, digA
+      beq $28, $18, digD
       
 sumuv:  add $3, $0, $7#QUANTIDADE DE PASSOS
+        add $9, $9, $5   #AVANÇA  # ANGULO DO TIRO
 fmv:
       beq $3, $0, atirar
       lw $23, 34000($9) #PEGA CÓPIA DO CENÁRIO
       sw $23, 0($9)  #COLOCA A COR DE VOLTA
-      add $9, $9, 10   #AVANÇA  # ANGULO DO TIRO
+      add $9, $9, 4   #AVANÇA  # ANGULO DO TIRO
       sw $18, 0($9) #COLOCA A COR NO PIXEL
       jal sleep  
       addi $3, $3, -1 
@@ -713,7 +716,7 @@ somalinhas2: addi $11, $0, 512 #SOMANDO PARA IMPRIMIR 5 LINHAS
 # --------------------------------------#
 ##Função: Armazenar valor alto no reg $15 e zerar para sair do laço
 # efeito: Fazer com que o movimento seja visível ao mudar posição do pixel
-sleep: addi $15, $0, 1000
+sleep: addi $15, $0, 2
 forsleep: beq $15, $0, fimsleep
           nop
           nop
@@ -724,14 +727,14 @@ forsleep: beq $15, $0, fimsleep
 fimsleep: jr $31
 
 
-digS: add $5, $5, -500
-      add $7, $0, 30
+digS: add $5, $5, 512
       j naodig
       
-digA: add $5, $5, -512
-      add $7, $0, 24
+digW: add $5, $5, -512
       j naodig
-
+     
+      
+digD: add $7, $7, 4
 naodig:      
       jal sleep
       j sumuv
