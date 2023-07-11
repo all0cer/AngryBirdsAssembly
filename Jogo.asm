@@ -666,20 +666,18 @@ sw $18, 0($9)
 digitos:   addi $6, $0, 's'
            addi $29, $0, 'w'
            addi $17, $0, 'a'
-           addi $18, $0, 'd'
+           addi $18, $0, 'z'
                                                                        
                                                        
 
 ######### MOVIMENTAÇÃO1############ 
 atirar:  lui $9, 0x1001
-      add $9, $9, 19000#INICIO DO DISPARO #colocar para somar com reg que controla a mira
+         add $9, $9, 19000
 dig:  lw $28, 0($4)
       beq $28, $0, naodig
       lw $28, 4($4)
       beq $28, $6, digS   
       beq $28, $29, digW 
-      beq $28, $17, digA
-      beq $28, $18, digD
       
 sumuv:  add $3, $0, $7#QUANTIDADE DE PASSOS
         add $9, $9, $5   #AVANÇA  # ANGULO DO TIRO
@@ -715,8 +713,8 @@ somalinhas2: addi $11, $0, 512 #SOMANDO PARA IMPRIMIR 5 LINHAS
 
 # --------------------------------------#
 ##Função: Armazenar valor alto no reg $15 e zerar para sair do laço
-# efeito: Fazer com que o movimento seja visível ao mudar posição do pixel
-sleep: addi $15, $0, 2
+# efeito: Fazer com que o movimento seja visível ao mudar posição do pixel..........
+sleep: addi $15, $0, 1000
 forsleep: beq $15, $0, fimsleep
           nop
           nop
@@ -727,14 +725,15 @@ forsleep: beq $15, $0, fimsleep
 fimsleep: jr $31
 
 
-digS: add $5, $5, 512
+digS: add $5, $5, 508
+      add $7, $7, 10
       j naodig
       
 digW: add $5, $5, -512
+      add $7, $7, 10
       j naodig
      
       
-digD: add $7, $7, 4
 naodig:      
       jal sleep
-      j sumuv
+      j dig
